@@ -6,7 +6,7 @@ import LoginForm from './pages/account/LoginForm';
 
 function App() {
  return (
-    <Router>
+    <Router basename='rc-tutors'>
       <Routes>
         <Route path="/" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />  
