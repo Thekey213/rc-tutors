@@ -1,16 +1,18 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../firebase/AuthProvider';
+import { Link } from 'react-router-dom';
 
 import iiLogo from "../../assets/images/iie_logo.png";
 import rcLogo from "../../assets/images/rc_logo.jpeg";
 import loImg from "../../assets/images/login_image.jpeg";
-import { Link } from 'react-router-dom';
 
 function LoginForm() {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
+
+    const { loginUser } = useContext(AuthContext); // Access loginUser from AuthContext
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,10 +22,18 @@ function LoginForm() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission here
+        try {
+            await loginUser(formData.email, formData.password); // Call loginUser with email and password
+            console.log("Signed in"); // Corrected to use console.error
+
+        } catch (error) {
+            console.error('Login failed:', error); // Corrected to use console.error
+            // Handle login failure, e.g., show an error message to the user
+        }
     };
+    
 
     return (
         <section className="vh-90">

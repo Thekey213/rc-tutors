@@ -3,10 +3,8 @@ import iieLogo from '../../assets/images/iie_logo.png';
 import loginImage from '../../assets/images/login_image.jpeg';
 import rcLogo from '../../assets/images/rc_logo.jpeg';
 import { Link } from 'react-router-dom';
-
-
-
-
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import auth from "../../firebase/firebase"; // Adjust this import path as necessary
 
 function RegisterForm() {
     const [formData, setFormData] = useState({
@@ -16,6 +14,8 @@ function RegisterForm() {
         password: '',
         confirmPassword: ''
     });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,7 +27,25 @@ function RegisterForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-       
+        if (formData.password !== formData.confirmPassword) {
+            setError("Passwords do not match.");
+            return;
+        }
+        setLoading(true);
+        setError(null);
+        createUserWithEmailAndPassword(auth, formData.email, formData.password)
+            .then((userCredential) => {
+                // Registration successful
+                console.log('User registered:', userCredential.user);
+                // Optionally, redirect the user to a different page or show a success message
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error('Error registering:', error);
+                setError(error.message);
+                setLoading(false);
+                // Handle errors, e.g., show an error message to the user
+            });
     };
 
     return (
@@ -123,6 +141,7 @@ function RegisterForm() {
                     Copyright © 2020. All rights reserved.
                 </div>
             </div>
+            {error && <div className="alert alert-danger" role="alert">{error}</div>}
         </div>
     );
 }
