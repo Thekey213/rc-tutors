@@ -55,7 +55,7 @@ function RegisterForm() {
 
     return (
         <div className="vh-90">
-            <Sidebar/>
+           
             <div className="container-fluid h-custom mb-2 mt-3">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-md-9 col-lg-6 col-xl-5">
