@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import RegisterForm from './pages/account/RegisterForm';
 import LoginForm from './pages/account/LoginForm';
-import AuthProvider from './firebase/AuthProvider'; // Corrected import statement
+import Homepage from './pages/home/Homepage';
+import AuthProvider from './firebase/AuthProvider'; 
 
 function App() {
  return (
@@ -12,7 +13,8 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/" element={<RegisterForm />} />
-          <Route path="/login" element={<LoginForm />} />  
+          <Route path="/login" element={<LoginForm />} /> 
+          <Route path="/home" element={<Homepage />} />  
         </Routes>
       </AuthProvider>
     </Router>

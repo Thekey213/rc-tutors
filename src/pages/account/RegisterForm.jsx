@@ -5,8 +5,13 @@ import rcLogo from '../../assets/images/rc_logo.jpeg';
 import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "../../firebase/firebase"; // Adjust this import path as necessary
+import Sidebar from '../../components/Sidebar';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterForm() {
+
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -37,7 +42,7 @@ function RegisterForm() {
             .then((userCredential) => {
                 // Registration successful
                 console.log('User registered:', userCredential.user);
-                // Optionally, redirect the user to a different page or show a success message
+                navigate("/logi") // Optionally, redirect the user to a different page or show a success message
                 setLoading(false);
             })
             .catch((error) => {
@@ -50,6 +55,7 @@ function RegisterForm() {
 
     return (
         <div className="vh-90">
+            <Sidebar/>
             <div className="container-fluid h-custom mb-2 mt-3">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-md-9 col-lg-6 col-xl-5">
