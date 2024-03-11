@@ -4,8 +4,8 @@ import loginImage from '../../assets/images/login_image.jpeg';
 import rcLogo from '../../assets/images/rc_logo.jpeg';
 import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import auth from "../../firebase/firebase"; // Adjust this import path as necessary
-import Sidebar from '../../components/Sidebar';
+import { db } from '../../firebase/firebase'; // Import db from firebase
+import { auth } from "../../firebase/firebase"; // Import auth from firebase
 import { useNavigate } from 'react-router-dom';
 
 function RegisterForm() {
@@ -42,8 +42,25 @@ function RegisterForm() {
             .then((userCredential) => {
                 // Registration successful
                 console.log('User registered:', userCredential.user);
-                navigate("/logi") // Optionally, redirect the user to a different page or show a success message
-                setLoading(false);
+                const userRef = db.collection('users').doc(userCredential.user.uid);
+                // Store user data in Firestore
+                userRef.set({
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    email: formData.email
+                    // Add more fields as necessary
+                })
+                .then(() => {
+                    console.log("User data successfully written to Firestore!");
+                    navigate("/login"); // Redirect to login page
+                })
+                .catch((error) => {
+                    console.error("Error writing user data to Firestore: ", error);
+                    setError("Error registering user. Please try again later.");
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
             })
             .catch((error) => {
                 console.error('Error registering:', error);
