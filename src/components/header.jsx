@@ -6,10 +6,7 @@ function Header() {
     <header>
         <div className=' justify-center flex pt-3 pb-2 items-center font-semibold bg-red-600'>
              <img src={world} alt="icon2" className="w-8 h-8 mr-2" />
-            <h1 className="text-black text-2xl font-semibold"> Hey This is new </h1>
-            <h1 className="text-black text-2xl font-semibold"> Hey This is new </h1>
-            <h1 className="text-black text-2xl font-semibold"> Hey This is new </h1>
-            <h1 className="text-black text-2xl font-semibold"> Hey This is new </h1>
+            <h1 className="text-black text-2xl font-semibold">Activity Stream</h1>
        
        
         </div>
