@@ -26,7 +26,7 @@ const Sidebar = () => {
           <div className="flex flex-col h-full justify-between">
             <div >
               <div className="p-4">
-                <img src={rc_logo} alt="rc-logo" className="bob" />
+                <img src={rc_logo} alt="rc-logo" className="sidebar_img" />
               </div>
               
               <ul>

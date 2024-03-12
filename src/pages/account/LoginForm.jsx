@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom';
 
 import iiLogo from "../../assets/images/iie_logo.png";
 import rcLogo from "../../assets/images/rc_logo.jpeg";
-import loImg from "../../assets/images/login_image.jpeg";
 
-import Sidebar from '../../components/Sidebar';
+
 
 function LoginForm() {
     
@@ -44,11 +43,10 @@ function LoginForm() {
     return (
         <section className="vh-90">
             <div className=" h-custom mt-5">
-                <Sidebar/>
             <div>
-        </div>
-                <div className="row d-flex flex-row flex-wrap  justify-content-center align-items-center h-100">
-                    
+            </div>
+                <div className="row d-flex flex-row flex-wrap  justify-content-center align-items-center">
+          
                     <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                         <form onSubmit={handleSubmit}>
                             <div className="d-flex flex-row flex-wrap  align-items-center justify-content-center justify-content-lg-start">

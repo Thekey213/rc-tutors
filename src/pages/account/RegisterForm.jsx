@@ -5,7 +5,7 @@ import rcLogo from '../../assets/images/rc_logo.jpeg';
 import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "../../firebase/firebase"; // Adjust this import path as necessary
-import Sidebar from '../../components/Sidebar';
+
 import { useNavigate } from 'react-router-dom';
 
 function RegisterForm() {
@@ -55,7 +55,6 @@ function RegisterForm() {
 
     return (
         <div className="vh-90">
-            <Sidebar/>
             <div className="container-fluid h-custom mb-2 mt-3">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-md-9 col-lg-6 col-xl-5">
