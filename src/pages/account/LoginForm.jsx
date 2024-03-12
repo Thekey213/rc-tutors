@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../firebase/AuthProvider';
 import { Link } from 'react-router-dom';
 
@@ -7,9 +6,12 @@ import iiLogo from "../../assets/images/iie_logo.png";
 import rcLogo from "../../assets/images/rc_logo.jpeg";
 
 
+import loImg from "../../assets/images/login_image.jpeg";
+import { useNavigate } from 'react-router-dom';
+
 
 function LoginForm() {
-    
+
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',
@@ -31,7 +33,7 @@ function LoginForm() {
         try {
             await loginUser(formData.email, formData.password); // Call loginUser with email and password
             console.log("Signed in"); // Corrected to use console.error
-            navigate('/home');
+            navigate("/home");
 
         } catch (error) {
             console.error('Login failed:', error); // Corrected to use console.error
@@ -47,14 +49,19 @@ function LoginForm() {
             </div>
                 <div className="row d-flex flex-row flex-wrap  justify-content-center align-items-center">
           
+            <div className="container-fluid h-custom mt-5">
+                <div className="row d-flex justify-content-center align-items-center h-100">
+                    <div className="col-md-9 col-lg-6 col-xl-5">
+                        <img src={loImg} alt="login_img" className="img-fluid" />
+                    </div>
                     <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                         <form onSubmit={handleSubmit}>
-                            <div className="d-flex flex-row flex-wrap  align-items-center justify-content-center justify-content-lg-start">
+                            <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                                 <div>
-                                    <img src={iiLogo} alt="iie-logo" className="w-20 h-17" />
+                                    <img src={iiLogo} alt="iie-logo" className="img-fluid" />
                                 </div>
                                 <div className="ms-3">
-                                    <img src={rcLogo} alt="rc-logo" className="w-20 h-17" />
+                                    <img src={rcLogo} alt="rc-logo" className="img-fluid" />
                                 </div>
                             </div>
                             <div className="divider d-flex align-items-center my-4">
@@ -91,15 +98,13 @@ function LoginForm() {
                                 </button>
                                 <p className="small fw-bold mt-2 pt-1 mb-5">
                                     Don't have an account? <Link to="/">Register</Link>
-                                  <p>
-                                  Try going here <Link to="src\pages\home\Homepage">Homepage</Link> </p>  
                                 </p>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-danger position-fixed-bottom">
+            <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-danger">
                 <div className="text-white mb-3 mb-md-0">
                     Copyright © 2020. All rights reserved.
                 </div>
