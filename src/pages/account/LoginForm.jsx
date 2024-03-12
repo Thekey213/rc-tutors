@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 
 import iiLogo from "../../assets/images/iie_logo.png";
 import rcLogo from "../../assets/images/rc_logo.jpeg";
-
-
 import loImg from "../../assets/images/login_image.jpeg";
 import { useNavigate } from 'react-router-dom';
 
@@ -44,11 +42,6 @@ function LoginForm() {
 
     return (
         <section className="vh-90">
-            <div className=" h-custom mt-5">
-            <div>
-            </div>
-                <div className="row d-flex flex-row flex-wrap  justify-content-center align-items-center">
-          
             <div className="container-fluid h-custom mt-5">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-md-9 col-lg-6 col-xl-5">
