@@ -4,8 +4,8 @@ import loginImage from '../../assets/images/login_image.jpeg';
 import rcLogo from '../../assets/images/rc_logo.jpeg';
 import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { db } from '../../firebase/firebase'; // Import db from firebase
-import { auth } from "../../firebase/firebase"; // Import auth from firebase
+import { db } from '../../firebase/firebase'; 
+import { auth } from "../../firebase/firebase"; 
 import { useNavigate } from 'react-router-dom';
 
 function RegisterForm() {
