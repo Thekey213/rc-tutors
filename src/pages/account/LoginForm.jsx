@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../firebase/AuthProvider';
 import { Link } from 'react-router-dom';
@@ -89,7 +90,9 @@ function LoginForm() {
                                 <button type="submit" className="btn btn-danger" style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}>
                                     Login
                                 </button>
+                                
                                 <p className="small fw-bold mt-2 pt-1 mb-5">
+                                    
                                     Don't have an account? <Link to="/">Register</Link>
                                 </p>
                             </div>

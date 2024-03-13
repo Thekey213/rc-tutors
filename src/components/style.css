@@ -1,10 +1,14 @@
+/* styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .sidebar_img{
     width: 7rem !important;
     height: 3rem !important;
 }
-
 .connector-line {
-    position: absolute;
+   
     left: 50%;
     top: 0;
     bottom: 0;
@@ -14,7 +18,26 @@
   }
   
   .notilist {
-    margin: 0.5rem;
+    margin: 1rem;
     background: rgba(217, 217, 217, 0.25);
+    display:block;
+    padding: 1px;
+    left:0;
+    position: absolute;
+    top:0;
+    width: 100%
+  }
+
+  .title{
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 15px;
+
+  }
+
+  li {
+    margin-bottom: 1px; /* Add margin at the bottom of each <li> element */
+    display: flexbox
+    
   }
   
