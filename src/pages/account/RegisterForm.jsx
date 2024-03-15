@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import iieLogo from '../../assets/images/iie_logo.png';
 import loginImage from '../../assets/images/login_image.jpeg';
@@ -7,6 +8,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from '../../firebase/firebase'; 
 import { auth } from "../../firebase/firebase"; 
 import { useNavigate } from 'react-router-dom';
+import Footer from '../../components/footer';  
 
 function RegisterForm() {
 
@@ -74,24 +76,32 @@ function RegisterForm() {
         <div className="vh-90">
            
             <div className="container-fluid h-custom mb-2 mt-3">
-                <div className="row d-flex justify-content-center align-items-center h-100">
+                <div className="row d-flex justify-content-center align-items-center ">
                     <div className="col-md-9 col-lg-6 col-xl-5">
-                        <img src={loginImage} alt="login_img" className="img-fluid" />
+                        <div className="d-none d-lg-block">
+                            <img src={loginImage} alt="login_img" className="img-fluid" />
+                        </div>
+                        </div>
+
+                       
+
+
+                    <div className="col-md-8 col-lg-6 col-xl-4 pt-5 offset-xl-1">
+
+                    <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                        <div>
+                            <img src={iieLogo} alt="iie-logo" className="img-fluid d-inline-block d-lg-block img-max-w-35" />
+                        </div>
+                        <div className="ms-3">
+                            <img src={rcLogo} alt="rc-logo" className="img-fluid d-inline-block d-lg-block img-max-w-35" />
+                        </div>
                     </div>
-                    <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                         <form onSubmit={handleSubmit}>
-                            <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                                <div>
-                                    <img src={iieLogo} alt="iie-logo" className="img-fluid" />
-                                </div>
-                                <div className="ms-3">
-                                    <img src={rcLogo} alt="rc-logo" className="img-fluid" />
-                                </div>
+                           
+                            <div className="divider d-flex align-items-center my-3">
+                                <p className="text-center fw-bold h3 mx-1 mb-0">Register</p>
                             </div>
-                            <div className="divider d-flex align-items-center my-4">
-                                <p className="text-center fw-bold mx-3 mb-0">Register</p>
-                            </div>
-                            <div className="form-outline mb-1">
+                            <div className="form-textbox">
                                 <label htmlFor="firstName">First Name</label>
                                 <input 
                                     type="text" 
@@ -102,7 +112,7 @@ function RegisterForm() {
                                     className="form-control" 
                                 />
                             </div>
-                            <div className="form-outline mb-1">
+                            <div className="form-textbox">
                                 <label htmlFor="lastName">Surname</label>
                                 <input 
                                     type="text" 
@@ -113,7 +123,7 @@ function RegisterForm() {
                                     className="form-control" 
                                 />
                             </div>
-                            <div className="form-outline mb-1">
+                            <div className="form-textbox">
                                 <label htmlFor="email">Email address</label>
                                 <input 
                                     type="email" 
@@ -125,7 +135,7 @@ function RegisterForm() {
                                     placeholder="use school email" 
                                 />
                             </div>
-                            <div className="form-outline mb-1">
+                            <div className="form-textbox">
                                 <label htmlFor="password">Password</label>
                                 <input 
                                     type="password" 
@@ -136,7 +146,7 @@ function RegisterForm() {
                                     className="form-control" 
                                 />
                             </div>
-                            <div className="form-outline mb-1">
+                            <div className="form-textbox">
                                 <label htmlFor="confirmPassword">Confirm Password</label>
                                 <input 
                                     type="password" 
@@ -147,11 +157,11 @@ function RegisterForm() {
                                     className="form-control" 
                                 />
                             </div>
-                            <div className="text-center text-lg-start mb-4">
+                            <div className="text-center text-lg-start mt-6 ">
                                 <button type="submit" className="btn btn-danger" style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}>
                                     Register
                                 </button>
-                                <p className="small fw-bold pt-1 mb-0">
+                                <p className="small fw-bold pt-3 mb-0">
                                     Already have an account? <Link to="/login">Login</Link>
                                 </p>
                             </div>
@@ -159,12 +169,7 @@ function RegisterForm() {
                     </div>
                 </div>
             </div>
-            <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-danger">
-                <div className="text-white mb-3 mb-md-0">
-                    Copyright © 2020. All rights reserved.
-                </div>
-            </div>
-            {error && <div className="alert alert-danger" role="alert">{error}</div>}
+        <Footer/>
         </div>
     );
 }

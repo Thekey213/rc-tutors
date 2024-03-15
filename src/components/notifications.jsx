@@ -7,28 +7,38 @@ import message from '../../src/assets/icons/message.png';
 
 const Notification = () => (
   <div>
-     <img src={bell} alt="Image 1" className=" w-10 h-10" />
-      <p className='title'>Notifications</p>
+   
+    <div style={{display: "flex", alignItems: "center"}}>
+      <img src={bell} alt="Image 1" className="w-7 h-7 inline-block mr-2" style={{verticalAlign: "middle"}}/>
+      <h2 className='title' style={{display: "inline", margin: "0 10px", textAlign: "center"}}>Notifications</h2>
+    </div>
+
     <div className="connector-line">
      
-      <ul>
-        <li>List item 1</li>
-        <li>List item 2</li>
-        <li>List item 3</li>
-        <li>List item 4</li>
-      </ul>
-      </div>
-
-      <p className='title'>Messages</p>
-      <img src={message} alt="Image 2" className=" w-8 h-8" />
-      <div className="connector-line">
-      <ul>
-        <li>List item 5</li>
-        <li>List item 6</li>
-        <li>List item 7</li>
-        <li>List item 8</li>
-      </ul>
+      <ul style={{width: "80vw", display: "flex", flexDirection: "column", justifyContent: "flex-start"}}>
+        <li style={{width: "auto"}}>These words come from a very deep deep place in my heart</li>
+        <li style={{width: "auto"}}>List item 2</li>
+        <li style={{width: "auto"}}>List item 3</li>
+        <li style={{width: "auto"}}>List item 4</li>
+        </ul>
     </div>
+
+      <div style={{display: "flex", alignItems: "center"}}>
+      <img src={message} alt="Image 1" className="w-7 h-7 inline-block mr-2" style={{verticalAlign: "middle"}}/>
+      <h2 className='title' style={{display: "inline", margin: "0 10px", textAlign: "center"}}>Messages</h2>
+    </div>
+    
+    <div className="connector-line">
+     
+     <ul style={{width: "80vw", display: "flex", flexDirection: "column", justifyContent: "flex-start"}}>
+       <li style={{width: "auto"}}>These words come from a very deep deep place in my heart</li>
+       <li style={{width: "auto"}}>List item 2</li>
+       <li style={{width: "auto"}}>List item 3</li>
+       <li style={{width: "auto"}}>List item 4</li>
+       </ul>
+    </div>
+
+    
   </div>
 );
 

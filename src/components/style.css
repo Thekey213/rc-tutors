@@ -11,10 +11,10 @@
    
     left: 50%;
     top: 0;
-    bottom: 0;
-    width: 1px;
-    background-color: #000;
-    transform: translateX(-50%);
+    bottom: 0; 
+    width: 2px;
+    background-color: #5b5b5b;
+    transform: translateX(3vw);
   }
   
   .notilist {
@@ -35,9 +35,15 @@
 
   }
 
-  li {
+  .li {
     margin-bottom: 1px; /* Add margin at the bottom of each <li> element */
-    display: flexbox
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
     
   }
-  
+  .form-textbox{
+    padding: 5px;
+    
+  }

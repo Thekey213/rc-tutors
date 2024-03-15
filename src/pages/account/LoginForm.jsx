@@ -3,10 +3,12 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../firebase/AuthProvider';
 import { Link } from 'react-router-dom';
 
+import './style.css'; // Import your styles
 import iiLogo from "../../assets/images/iie_logo.png";
 import rcLogo from "../../assets/images/rc_logo.jpeg";
 import loImg from "../../assets/images/login_image.jpeg";
 import { useNavigate } from 'react-router-dom';
+import Footer from '../../components/footer';   
 
 
 function LoginForm() {
@@ -46,7 +48,9 @@ function LoginForm() {
             <div className="container-fluid h-custom mt-5">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-md-9 col-lg-6 col-xl-5">
-                        <img src={loImg} alt="login_img" className="img-fluid" />
+                    <div className="d-none d-lg-block">
+                            <img src={loImg} alt="login_img" className="img-fluid" />
+                        </div>
                     </div>
                     <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                         <form onSubmit={handleSubmit}>
@@ -64,7 +68,7 @@ function LoginForm() {
                             <div className="text-center text-lg-start mt-1">
                                 <p className="small fw-bold mt-2 pt-1 mb-3"> Sign in with your organizational account</p>
                             </div>
-                            <div className="form-outline mb-1">
+                            <div className="form-textbox">
                                 <label htmlFor="email">Email address</label>
                                 <input 
                                     type="email" 
@@ -75,7 +79,7 @@ function LoginForm() {
                                     className="form-control" 
                                 />
                             </div>
-                            <div className="form-outline mb-1">
+                            <div className="form-textbox">
                                 <label htmlFor="password">Password</label>
                                 <input 
                                     type="password" 
@@ -100,11 +104,8 @@ function LoginForm() {
                     </div>
                 </div>
             </div>
-            <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-danger">
-                <div className="text-white mb-3 mb-md-0">
-                    Copyright © 2020. All rights reserved.
-                </div>
-            </div>
+          
+           <Footer/>
         </section>
     );
 }
