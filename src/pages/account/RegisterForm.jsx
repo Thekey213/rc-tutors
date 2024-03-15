@@ -157,11 +157,11 @@ function RegisterForm() {
                                     className="form-control" 
                                 />
                             </div>
-                            <div className="text-center text-lg-start mt-6 ">
+                            <div className="text-center text-lg-start mt-5 ">
                                 <button type="submit" className="btn btn-danger" style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}>
                                     Register
                                 </button>
-                                <p className="small fw-bold pt-3 mb-0">
+                                <p className="small fw-bold pt-2 mb-0">
                                     Already have an account? <Link to="/login">Login</Link>
                                 </p>
                             </div>
@@ -169,6 +169,9 @@ function RegisterForm() {
                     </div>
                 </div>
             </div>
+         <br></br> <br></br>
+          <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>
+          <br></br> <br></br> <br></br> <br></br>
         <Footer/>
         </div>
     );

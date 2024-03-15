@@ -62,8 +62,8 @@ function LoginForm() {
                                     <img src={rcLogo} alt="rc-logo" className="img-fluid" />
                                 </div>
                             </div>
-                            <div className="divider d-flex align-items-center my-4">
-                                <p className="text-center fw-bold mx-3 mb-0">Login</p>
+                            <div className="divider d-flex align-items-center my-3">
+                                <p className=" fw-bold h3 mx-1 mb-0">Login</p>
                             </div>
                             <div className="text-center text-lg-start mt-1">
                                 <p className="small fw-bold mt-2 pt-1 mb-3"> Sign in with your organizational account</p>
@@ -104,7 +104,8 @@ function LoginForm() {
                     </div>
                 </div>
             </div>
-          
+            <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>
+          <br></br> <br></br> <br></br> <br></br>
            <Footer/>
         </section>
     );

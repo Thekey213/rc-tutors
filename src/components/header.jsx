@@ -5,9 +5,9 @@ function Header() {
   return (
 
     <header>
-        <div className=' justify-center flex pt-3 pb-2 items-center font-semibold bg-red-600'>
-             <img src={world} alt="icon2" className="w-8 h-8 mr-2" />
-            <h1 className="text-black text-2xl font-semibold">Activity Stream</h1>
+        <div className=' justify-center flex pt-2 pb-1 items-center font-semibold bg-red-600'>
+             <img src={world} alt="icon2" className="w-7 h-7 mr-2" />
+            <h2 className="text-black text-2xl font-semibold">Activity Stream</h2>
        
        
         </div>
