@@ -3,6 +3,7 @@ import React from "react";
 import Sidebar from "../../components/Sidebar";
  import Header from "../../components/header";
  import Notification from "../../components/notifications";
+ import world from '../../assets/icons/world.png';
 
 const Homepage = () => {
 
@@ -11,7 +12,7 @@ const Homepage = () => {
     return(
        <div>
            
-            <div><Sidebar/><Header Description={"Hello world"}/>
+            <div><Sidebar/><Header Description={"Activity Stream"} logo={world}/>
                 <div className="pl-2 pr-2 pt-4">
                     <Notification/>
                 </div>

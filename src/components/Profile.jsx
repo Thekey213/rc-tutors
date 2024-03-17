@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import profileImg from '../../src/assets/images/profileExample.jpeg';
+import user from '../../src/assets/icons/user.png'; 
 import Sidebar from './Sidebar';
 import Header from './header';
 const Profile = ({ fullName, email, phone, password }) => {
@@ -10,7 +11,7 @@ const Profile = ({ fullName, email, phone, password }) => {
     };
 
     return (
-<div><Header Description={"Profile"}/>
+     <div><Header Description={"Profile"} logo={user}/>
         <div className="mt-5">
             
             <Sidebar/>

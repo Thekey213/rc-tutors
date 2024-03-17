@@ -22,8 +22,33 @@ const Sidebar = () => {
   return (
     <>
       {sidebarOpen && (
+
         <div className="bg-red-600 text-white h-screen w-1/9 fixed top-0 left-0 pr-6 "  style={{ zIndex: 1 }}>
-          {/* Sidebar Content */}
+          
+                  <div className="fixed top-0 left-0 pr-6">
+          <button
+            onClick={toggleSidebar}
+            className="bg-red-600 text-white pl-4 pr-4 pt-3 rounded-sm"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+
+        </div>
+        
           <div className="flex flex-col h-full justify-between">
             <div className="pt-4 pl-1" >
               <div className=" pt-4 pb-6 pl-6 pr-0">
