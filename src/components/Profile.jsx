@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import profileImg from '../../src/assets/images/profileExample.jpeg';
-
+import Sidebar from './Sidebar';
+import Header from './header';
 const Profile = ({ fullName, email, phone, password }) => {
     const [showPassword, setShowPassword] = useState(false);
 
@@ -9,7 +10,10 @@ const Profile = ({ fullName, email, phone, password }) => {
     };
 
     return (
+<div><Header Description={"Profile"}/>
         <div className="mt-5">
+            
+            <Sidebar/>
             <div className="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
                 <div className="flex flex-col items-center mb-4">
                 <div className="rounded-full w-40 h-40 overflow-hidden mx-auto mb-4 border-4 flex items-center justify-center" style={{backgroundImage: `url(${profileImg})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
@@ -28,12 +32,13 @@ const Profile = ({ fullName, email, phone, password }) => {
                 <p className="text-gray-700 mb-2 ">Phone<br/> <span className="font-bold">{phone}</span></p>
                 <div className="flex items-center mb-2">
                     <div className="flex items-center">
-                        <p className="text-gray-700 mr-2">Password<br/><span className="font-bold">{password}</span><br/></p>
+                <p className="text-gray-700 mr-2">Password<br/><span className="font-bold">{password}</span><br/></p>
                        
                     </div>
                 </div>
                
             </div>
+        </div>
         </div>
     );
 };
