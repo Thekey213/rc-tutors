@@ -27,7 +27,7 @@ function App() {
           {/* Protected routes */}
           <Route path="/home" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
           <Route path="/chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
-          <Route path="/profile" element={<ProtectedRoute><Profile fullName={"Azakhiwe Dilinga"} email={"azdilinga@gmail.com"} password={"wegotthis"} phone={"0660414374"} /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile fullName={"Azakhiwe Dilinga"} studentnumber={"292084765"} email={"azdilinga@gmail.com"} password={"wegotthis"} age={"22"} phone={"0660414374"} /></ProtectedRoute>} />
   
         </Routes>
       </Router>
