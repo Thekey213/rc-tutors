@@ -21,4 +21,4 @@ const analytics = getAnalytics(app); // Initialize Firebase Analytics
 const auth = getAuth(app); // Initialize Firebase Authentication
 const db = getFirestore(app); // Initialize Firestore
 
-export { auth, db };
+export  { auth, db };

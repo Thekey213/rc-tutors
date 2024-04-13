@@ -9,6 +9,7 @@ import { db } from '../../firebase/firebase';
 import { auth } from "../../firebase/firebase"; 
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/footer';  
+import { doc, setDoc } from "firebase/firestore"; 
 
 function RegisterForm() {
 
@@ -32,7 +33,7 @@ function RegisterForm() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (formData.password !== formData.confirmPassword) {
             setError("Passwords do not match.");
@@ -40,37 +41,27 @@ function RegisterForm() {
         }
         setLoading(true);
         setError(null);
-        createUserWithEmailAndPassword(auth, formData.email, formData.password)
-            .then((userCredential) => {
-                // Registration successful
-                console.log('User registered:', userCredential.user);
-                const userRef = db.collection('users').doc(userCredential.user.uid);
-                // Store user data in Firestore
-                userRef.set({
-                    firstName: formData.firstName,
-                    lastName: formData.lastName,
-                    email: formData.email
-                    // Add more fields as necessary
-                })
-                .then(() => {
-                    console.log("User data successfully written to Firestore!");
-                    navigate("/login"); // Redirect to login page
-                })
-                .catch((error) => {
-                    console.error("Error writing user data to Firestore: ", error);
-                    setError("Error registering user. Please try again later.");
-                })
-                .finally(() => {
-                    setLoading(false);
-                });
-            })
-            .catch((error) => {
-                console.error('Error registering:', error);
-                setError(error.message);
-                setLoading(false);
-                // Handle errors, e.g., show an error message to the user
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+            console.log('User registered:', userCredential.user);
+            const userRef = doc(db, "users", userCredential.user.uid); // Correct way to reference a document
+            await setDoc(userRef, { // Use setDoc to write data
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: formData.email
             });
+            console.log("User data successfully written to Firestore!");
+            setTimeout(() => {
+                navigate("/login"); // Redirect to login page
+            }, 3000);
+        } catch (error) {
+            console.error('Error registering:', error);
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
     };
+
 
     return (
         <div className="vh-90">
