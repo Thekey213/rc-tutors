@@ -86,7 +86,7 @@ const Sidebar = () => {
                   <div className='hover:translate-x-1 transition duration-100'>
                     <img src={message} alt="icon2" className="w-7 h-7 mr-2 inline" />
                     {/* Use Link instead of anchor tag */}
-                    <Link to="/Chat" className="text-black no-underline font-semibold inline">
+                    <Link to="/chat" className="text-black no-underline font-semibold inline">
                       Chat
                     </Link>
                   </div>

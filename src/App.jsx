@@ -10,6 +10,7 @@ import AuthProvider from './firebase/AuthProvider';
 import Profile from './components/Profile';
 import ProtectedRoute from '../ProtectedRoute';
 
+
 function App() {
   const { user, loading } = useContext(AuthContext) || {}; // Provide default value for user object
 
@@ -25,10 +26,13 @@ function App() {
           <Route path="/" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} /> 
           {/* Protected routes */}
+         
           <Route path="/home" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
           <Route path="/chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile fullName={"Azakhiwe Dilinga"} studentnumber={"292084765"} email={"azdilinga@gmail.com"} password={"wegotthis"} age={"22"} phone={"0660414374"} /></ProtectedRoute>} />
   
+       
+         
         </Routes>
       </Router>
     </AuthProvider>
