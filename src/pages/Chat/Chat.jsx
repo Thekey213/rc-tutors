@@ -10,7 +10,7 @@ import chat from '../../assets/icons/message.png';
 const Chat = () => {
   return (
     <>
-    <Sidebar/><Header Description={"Profile"} logo={chat}/>
+    <Sidebar/><Header Description={"Chat"} logo={chat}/>
     <section className="chat-section">
                     
       <div className="container">

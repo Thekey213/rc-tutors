@@ -4,11 +4,12 @@ import './App.css';
 import RegisterForm from './pages/account/RegisterForm';
 import LoginForm from './pages/account/LoginForm';
 import Homepage from './pages/home/Homepage';
-import Chat from './pages/Chat/Chat';
+import Chat from './pages/chat/Chat';
 import { AuthContext } from './firebase/AuthProvider';
 import AuthProvider from './firebase/AuthProvider';
 import Profile from './components/Profile';
 import ProtectedRoute from '../ProtectedRoute';
+import EditProfile from './pages/profile/EditProfile';
 
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
          
           <Route path="/home" element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
           <Route path="/chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
-          <Route path="/profile" element={<ProtectedRoute><Profile fullName={"Azakhiwe Dilinga"} studentnumber={"292084765"} email={"azdilinga@gmail.com"} password={"wegotthis"} age={"22"} phone={"0660414374"} /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>} />
+          <Route path="/edit" element={<ProtectedRoute><EditProfile/></ProtectedRoute>} />
   
        
          
