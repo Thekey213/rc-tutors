@@ -7,7 +7,7 @@ import Homepage from './pages/home/Homepage';
 import Chat from './pages/chat/Chat';
 import { AuthContext } from './firebase/AuthProvider';
 import AuthProvider from './firebase/AuthProvider';
-import Profile from './components/Profile';
+import Profile from './pages/profile/Profile';
 import ProtectedRoute from '../ProtectedRoute';
 import EditProfile from './pages/profile/EditProfile';
 

@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { db } from '../firebase/firebase';
-import { doc,  getDoc } from 'firebase/firestore';
-import { AuthContext } from '../firebase/AuthProvider'; 
+import { db } from '../../firebase/firebase';
+import { doc, getDoc} from 'firebase/firestore';
+import { AuthContext } from '../../firebase/AuthProvider'; 
 import { useNavigate, Link } from 'react-router-dom'; 
-import profileImg from '../../src/assets/images/profileHolder.png';
-import userIcon from '../../src/assets/icons/user.png'; 
-import Sidebar from './Sidebar';
-import Header from './header';
+import Header from '../../components/header';
+import Sidebar from '../../components/Sidebar';
+import profileImg from '../../../src/assets/images/profileHolder.png';
+import userImg from '../../assets/icons/user.png';
+
+
 
 
 const Profile = () => {
@@ -37,7 +39,7 @@ const Profile = () => {
 
     return (
         <div>
-            <Header Description={"Profile"} logo={userIcon}/>
+            <Header Description={"Profile"} logo={userImg}/>
             <div className="mt-5">
                 <Sidebar/>
                 <div className="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
