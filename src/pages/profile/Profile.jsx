@@ -7,8 +7,7 @@ import Header from '../../components/header';
 import Sidebar from '../../components/Sidebar';
 import profileImg from '../../../src/assets/images/profileHolder.png';
 import userImg from '../../assets/icons/user.png';
-
-
+import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 
 
 const Profile = () => {
@@ -23,7 +22,21 @@ const Profile = () => {
                 const userDocSnap = await getDoc(userDocRef);
 
                 if (userDocSnap.exists()) {
-                    setUserData(userDocSnap.data());
+                    const data = userDocSnap.data();
+                    const imageURL = data.profileImage;
+                    if (imageURL) {
+                        try {
+                            const storage = getStorage();
+                            const imageRef = ref(storage, imageURL);
+                            const fetchedImageURL = await getDownloadURL(imageRef);
+                            setUserData({ ...data, profileImageURL: fetchedImageURL });
+                        } catch (error) {
+                            console.error("Error fetching image URL:", error);
+                            setUserData({ ...data, profileImageURL: profileImg });
+                        }
+                    } else {
+                        setUserData({ ...data, profileImageURL: profileImg });
+                    }
                 } else {
                     console.log("No such document!");
                 }
@@ -44,7 +57,7 @@ const Profile = () => {
                 <Sidebar/>
                 <div className="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
                     <div className="flex flex-col items-center mb-4">
-                        <div className="rounded-full w-32 h-32 overflow-hidden mx-auto mb-4 border-4 flex items-center justify-center" style={{backgroundImage: `url(${profileImg})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                        <div className="rounded-full w-32 h-32 overflow-hidden mx-auto mb-4 border-4 flex items-center justify-center" style={{backgroundImage: `url(${userData.profileImageURL || profileImg})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
                         </div>
                         <div>
                             <Link to="/edit" className="text-sm text-gray-500 hover:text-gray-700 no-underline" >
@@ -63,7 +76,6 @@ const Profile = () => {
                     <div className="flex items-center mb-2">
                         <p className="text-gray-700 mr-2">Tutor Verified<br/><span className="font-bold">{userData.isVerified ? 'Yes' : 'No'}</span><br/></p>
                     </div>
-
                 </div>
             </div>
         </div>
