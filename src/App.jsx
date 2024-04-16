@@ -4,7 +4,7 @@ import './App.css';
 import RegisterForm from './pages/account/RegisterForm';
 import LoginForm from './pages/account/LoginForm';
 import Homepage from './pages/home/Homepage';
-import Chat from './pages/chat/Chat';
+import Chat from './pages/Chat/Chat';
 import { AuthContext } from './firebase/AuthProvider';
 import AuthProvider from './firebase/AuthProvider';
 import Profile from './pages/profile/Profile';
