@@ -10,6 +10,8 @@ import AuthProvider from './firebase/AuthProvider';
 import Profile from './pages/profile/Profile';
 import ProtectedRoute from '../ProtectedRoute';
 import EditProfile from './pages/profile/EditProfile';
+import Tutors from './pages/tutors/Tutors';
+import dummyData from './pages/tutors/dummyData.json';
 
 
 function App() {
@@ -32,6 +34,7 @@ function App() {
           <Route path="/chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>} />
           <Route path="/edit" element={<ProtectedRoute><EditProfile/></ProtectedRoute>} />
+          <Route path="/tutors" element={<ProtectedRoute><Tutors tutorModules={dummyData}/></ProtectedRoute>} />
   
        
          
