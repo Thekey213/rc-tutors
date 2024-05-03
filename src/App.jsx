@@ -12,6 +12,8 @@ import ProtectedRoute from '../ProtectedRoute';
 import EditProfile from './pages/profile/EditProfile';
 import Tutors from './pages/tutors/Tutors';
 import dummyData from './pages/tutors/dummyData.json';
+import TutorDetails from './pages/tutors/TutorDetails';
+
 
 
 function App() {
@@ -35,7 +37,13 @@ function App() {
           <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>} />
           <Route path="/edit" element={<ProtectedRoute><EditProfile/></ProtectedRoute>} />
           <Route path="/tutors" element={<ProtectedRoute><Tutors tutorModules={dummyData}/></ProtectedRoute>} />
-  
+          <Route path="/tutor/:tutorName" element={<ProtectedRoute><TutorDetails tutorModules={dummyData} /></ProtectedRoute>} />
+
+         
+                    
+        
+          
+             
        
          
         </Routes>

@@ -73,6 +73,7 @@ const Sidebar = () => {
                     </Link>
                   </div>
                 </li>
+  
                 <li className="mb-2 flex items-center p-1">
                   <div className='hover:translate-x-1 transition duration-100'>
                     <img src={world} alt="icon2" className="w-7 h-7 mr-2 inline" />
@@ -108,7 +109,7 @@ const Sidebar = () => {
       )}
       {/* Button to toggle sidebar */}
       {!sidebarOpen && (
-        <div className="fixed top-0 left-0 pr-6">
+        <div className="fixed top-0 left-0 pr-6 ">
           <button
             onClick={toggleSidebar}
             className="bg-red-600 text-white pl-4 pr-4 pt-3  rounded-sm"
