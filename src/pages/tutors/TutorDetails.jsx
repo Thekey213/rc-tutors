@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import './TutorDetails.css'; // Import CSS for styling
 
 const TutorDetails = ({ tutorModules }) => {
     const { tutorName } = useParams(); // Get the tutorName parameter from the URL
@@ -15,14 +16,22 @@ const TutorDetails = ({ tutorModules }) => {
     }
 
     if (!tutor) {
-        return <div>Tutor not found</div>;
+        return <div className="tutor-not-found">Tutor not found</div>;
     }
 
     return (
-        <div>
-            <h2>{tutor.tutorName}</h2>
-            <img src={tutor.tutorImage} alt={`${tutor.tutorName}'s profile`} />
-            {/* You can add more details about the tutor here */}
+        <div className="tutor-details-container">
+            <div className="tutor-details">
+               
+                <img src={tutor.tutorImage} alt={`${tutor.tutorName}'s profile`} className="tutor-image" />
+                 <h2 className="mt-4 text-dark text-decoration-none tutor-name">{tutor.tutorName}</h2>
+                <p className="tutor-bio">{tutor.bio}</p>
+                <div className="tutor-info">
+                    <p><strong>Academic Year:</strong> {tutor.academicYear}</p>
+                    <p><strong>Average Marks:</strong> {tutor.averageMarks}</p>
+                    <p><strong>Skills:</strong> {tutor.skills.join(", ")}</p>
+                </div>
+            </div>
         </div>
     );
 };

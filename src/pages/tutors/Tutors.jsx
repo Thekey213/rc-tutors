@@ -29,7 +29,7 @@ const Tutors = ({ tutorModules }) => {
                                                         <div key={`tutor-${tutorIndex}`} className="col-12">
                                                             <div className="d-flex align-items-center">
                                                                 <img src={tutor.tutorImage} className="img-fluid rounded-circle tutor-img" alt={`${tutor.tutorName}'s profile`} />
-                                                                <Link to={`/tutor/${encodeURIComponent(tutor.tutorName)}`} className="mt-2 tutor-name">{tutor.tutorName}</Link>
+                                                                <Link to={`/tutor/${encodeURIComponent(tutor.tutorName)}`} className="mt-2 text-secondary text-decoration-none">{tutor.tutorName}</Link>
                                                             </div>
                                                             <hr className="divider" />
                                                         </div>

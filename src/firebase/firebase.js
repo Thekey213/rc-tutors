@@ -12,7 +12,7 @@ const firebaseConfig = {
  projectId: "rc-tutors-f8841",
  storageBucket: "rc-tutors-f8841.appspot.com",
  messagingSenderId: "1004513724315",
- appId: "1:1004513724315:web:0dc1bae8526751e043433e",
+ appId: "1:10045137            24315:web:0dc1bae8526751e043433e",
  measurementId: "G-TTW1GP930T"
 };
 

@@ -1,66 +1,166 @@
 [
-  {
+    {
       "faculty": "Faculty of Engineering",
       "modules": [
-          {
-              "moduleName": "Computer Science Fundamentals",
-              "tutors": [
-                  { "tutorName": "John Doe", "tutorImage": "https://via.placeholder.com/150" },
-                  { "tutorName": "Jane Smith", "tutorImage": "https://via.placeholder.com/150" },
-                  { "tutorName": "Michael Johnson", "tutorImage": "https://via.placeholder.com/150" },
-                  { "tutorName": "Sarah Williams", "tutorImage": "https://via.placeholder.com/150" }
-              ]
-          },
-          {
-              "moduleName": "Software Engineering Principles",
-              "tutors": [
-                  { "tutorName": "Alice Johnson", "tutorImage": "https://via.placeholder.com/150" },
-                  { "tutorName": "Bob Williams", "tutorImage": "https://via.placeholder.com/150" }
-              ]
-          }
+        {
+          "moduleName": "Computer Science Fundamentals",
+          "tutors": [
+            {
+              "tutorName": "John Doe",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hi, I'm John Doe, a senior majoring in Computer Science. I have a strong passion for programming and algorithms. I've been a teaching assistant for several computer science courses and am actively involved in our university's coding club. I love participating in hackathons and have won several awards for my projects. In my free time, I enjoy working on open-source software and contributing to the tech community.",
+              "academicYear": "Senior",
+              "averageMarks": 88,
+              "skills": ["Java", "Python", "Algorithms", "Data Structures"]
+            },
+            {
+              "tutorName": "Jane Smith",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hello, I'm Jane Smith, a junior studying Computer Science. My interests include software development and artificial intelligence. I have experience as a teaching assistant and am part of the AI research group on campus. I enjoy mentoring fellow students and helping them grasp complex concepts. Outside of academics, I like to explore new technologies and work on innovative projects.",
+              "academicYear": "Junior",
+              "averageMarks": 89,
+              "skills": ["Machine Learning", "C++", "TensorFlow"]
+            },
+            {
+              "tutorName": "Michael Johnson",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hi there, I'm Michael Johnson, a senior in the Computer Science department. I specialize in cloud computing and system design. I have served as a teaching assistant and have also interned at leading tech companies like Google and Microsoft. I'm passionate about teaching and helping students develop practical skills for their future careers. In my spare time, I work on personal tech projects and contribute to online coding forums.",
+              "academicYear": "Senior",
+              "averageMarks": 85,
+              "skills": ["Cloud Computing", "System Design", "AWS", "Azure"]
+            },
+            {
+              "tutorName": "Sarah Williams",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hello, I'm Sarah Williams, a senior majoring in Computer Science. My focus areas are data structures and algorithms, and I've been a teaching assistant for several related courses. I'm an active member of the Women in Tech club and enjoy organizing events to encourage more female students to pursue careers in technology. When I'm not studying, I love coding and developing new applications.",
+              "academicYear": "Senior",
+              "averageMarks": 87,
+              "skills": ["Data Structures", "Algorithms", "JavaScript"]
+            }
+          ]
+        },
+        {
+          "moduleName": "Software Engineering Principles",
+          "tutors": [
+            {
+              "tutorName": "Alice Johnson",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hi, I'm Alice Johnson, a junior studying Software Engineering. I have a keen interest in agile development and software testing. I have been a teaching assistant and am also involved in our university's software development club. I enjoy collaborating on projects and helping students understand the principles of software engineering. In my free time, I work on improving my coding skills and developing new software applications.",
+              "academicYear": "Junior",
+              "averageMarks": 89,
+              "skills": ["Agile Development", "Software Testing", "Java"]
+            },
+            {
+              "tutorName": "Bob Williams",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hello, I'm Bob Williams, a senior in the Software Engineering program. My expertise lies in DevOps and continuous integration/continuous deployment (CI/CD). I've worked as a teaching assistant and interned at several tech companies, gaining practical experience in software lifecycle management. I love sharing my knowledge with fellow students and helping them prepare for careers in software engineering. Outside of school, I enjoy working on personal tech projects and learning new technologies.",
+              "academicYear": "Senior",
+              "averageMarks": 88,
+              "skills": ["DevOps", "CI/CD", "Docker", "Kubernetes"]
+            }
+          ]
+        }
       ]
-  },
-  {
+    },
+    {
       "faculty": "Faculty of Science",
       "modules": [
-          {
-              "moduleName": "Physics I",
-              "tutors": [
-                  { "tutorName": "Emily Brown", "tutorImage": "https://via.placeholder.com/150" },
-                  { "tutorName": "Michael Davis", "tutorImage": "https://via.placeholder.com/150" }
-              ]
-          }
+        {
+          "moduleName": "Physics I",
+          "tutors": [
+            {
+              "tutorName": "Emily Brown",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hi, I'm Emily Brown, a junior majoring in Physics. My interests include quantum mechanics and particle physics. I've been a teaching assistant for introductory physics courses and love making complex concepts accessible to students. I'm involved in the physics club and enjoy participating in research projects. In my spare time, I like to read about new scientific discoveries and conduct experiments.",
+              "academicYear": "Junior",
+              "averageMarks": 90,
+              "skills": ["Quantum Mechanics", "Particle Physics"]
+            },
+            {
+              "tutorName": "Michael Davis",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hello, I'm Michael Davis, a senior Physics major. I specialize in electromagnetism and thermodynamics. I've worked as a teaching assistant and have conducted research at various institutes. I enjoy helping students understand the fundamental principles of physics and their real-world applications. Outside of academics, I like to engage in science outreach activities and promote interest in physics among young students.",
+              "academicYear": "Senior",
+              "averageMarks": 87,
+              "skills": ["Electromagnetism", "Thermodynamics"]
+            }
+          ]
+        }
       ]
-  },
-  {
+    },
+    {
       "faculty": "Faculty of Arts",
       "modules": [
-          {
-              "moduleName": "English Literature",
-              "tutors": [
-                  { "tutorName": "Sarah Miller", "tutorImage": "https://via.placeholder.com/150" },
-                  { "tutorName": "Tom Wilson", "tutorImage": "https://via.placeholder.com/150" }
-              ]
-          },
-          {
-              "moduleName": "History of Art",
-              "tutors": [
-                  { "tutorName": "Lisa Anderson", "tutorImage": "https://via.placeholder.com/150" },
-                  { "tutorName": "Matthew Jones", "tutorImage": "https://via.placeholder.com/150" }
-              ]
-          }
+        {
+          "moduleName": "English Literature",
+          "tutors": [
+            {
+              "tutorName": "Sarah Miller",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hi, I'm Sarah Miller, a junior studying English Literature. My focus is on modernist literature and literary theory. I've been a teaching assistant for various literature courses and love discussing literature with students. I'm involved in the literary club and have published a few articles in the university's literary magazine. In my free time, I enjoy writing poetry and short stories.",
+              "academicYear": "Junior",
+              "averageMarks": 91,
+              "skills": ["Modernist Literature", "Literary Theory", "Writing"]
+            },
+            {
+              "tutorName": "Tom Wilson",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hello, I'm Tom Wilson, a senior majoring in English Literature. My interests include Renaissance literature and creative writing. I have been a teaching assistant and enjoy helping students appreciate the beauty of literature. I'm part of the creative writing club and regularly participate in writing workshops. When I'm not reading or writing, I like to perform in local theater productions.",
+              "academicYear": "Senior",
+              "averageMarks": 88,
+              "skills": ["Renaissance Literature", "Creative Writing", "Theater"]
+            }
+          ]
+        },
+        {
+          "moduleName": "History of Art",
+          "tutors": [
+            {
+              "tutorName": "Lisa Anderson",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hi, I'm Lisa Anderson, a junior majoring in Art History. My focus areas are Renaissance art and modern art movements. I've worked as a teaching assistant and am a member of the art history club. I love sharing my passion for art with students and helping them understand the cultural and historical context of different artworks. Outside of academics, I enjoy visiting museums and curating small exhibitions.",
+              "academicYear": "Junior",
+              "averageMarks": 90,
+              "skills": ["Renaissance Art", "Modern Art", "Exhibition Curation"]
+            },
+            {
+              "tutorName": "Matthew Jones",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hello, I'm Matthew Jones, a senior studying Art History. My interests include Baroque art and contemporary art practices. I have experience as a teaching assistant and have interned at several art galleries. I enjoy helping students develop a deep appreciation for art and its impact on society. In my spare time, I like to create digital art and participate in art-related community projects.",
+              "academicYear": "Senior",
+              "averageMarks": 87,
+              "skills": ["Baroque Art", "Contemporary Art", "Digital Art"]
+            }
+          ]
+        }
       ]
-  },
-  {
+    },
+    {
       "faculty": "Faculty of Business",
       "modules": [
-          {
-              "moduleName": "Marketing Principles",
-              "tutors": [
-                  { "tutorName": "Patricia Clark", "tutorImage": "https://via.placeholder.com/150" },
-                  { "tutorName": "Robert White", "tutorImage": "https://via.placeholder.com/150" }
-              ]
-          }
+        {
+          "moduleName": "Marketing Principles",
+          "tutors": [
+            {
+              "tutorName": "Patricia Clark",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hi, I'm Patricia Clark, a junior studying Marketing. My interests include digital marketing and consumer behavior. I have been a teaching assistant for marketing courses and enjoy helping students understand marketing concepts and strategies. I'm involved in the marketing club and have worked on several marketing campaigns for local businesses. In my free time, I like to explore new marketing trends and attend industry seminars.",
+              "academicYear": "Junior",
+              "averageMarks": 89,
+              "skills": ["Digital Marketing", "Consumer Behavior", "Market Research"]
+            },
+            {
+              "tutorName": "Robert White",
+              "tutorImage": "https://via.placeholder.com/150",
+              "bio": "Hello, I'm Robert White, a senior majoring in Marketing. My focus areas are strategic marketing and brand management. I have served as a teaching assistant and have completed internships at marketing agencies. I enjoy helping students develop marketing campaigns and branding strategies. Outside of academics, I like to analyze market trends and work on personal marketing projects.",
+              "academicYear": "Senior",
+              "averageMarks": 87,
+              "skills": ["Strategic Marketing", "Brand Management", "Marketing Analytics"]
+            }
+          ]
+        }
       ]
-  }
-]
+    }
+  ]
+   
+  

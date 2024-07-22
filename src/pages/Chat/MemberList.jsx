@@ -1,57 +1,76 @@
-// MemberList.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { db } from '../../firebase/firebase';
+import { collection, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
 
-const MemberList = () => {
-  return (
-    <div className="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0 bg-white">
-      <h5 className="font-weight-bold mb-3 text-center text-lg-start">Member</h5>
-      <div className="card">
-        <div className="card-body">
-          <ul className="list-unstyled mb-0">
-            <li className="p-2 border-bottom" style={{ backgroundColor: '#eee' }}>
-              <a href="#!" className="d-flex justify-content-between">
-                <div className="d-flex flex-row">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp"
-                    alt="avatar"
-                    className="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
-                    width="60"
-                  />
-                  <div className="pt-1">
-                    <p className="fw-bold mb-0">John Doe</p>
-                    <p className="small text-muted">Hello, Are you there?</p>
-                  </div>
-                </div>
-                <div className="pt-1">
-                  <p className="small text-muted mb-1">Just now</p>
-                  <span className="badge bg-danger float-end">1</span>
-                </div>
-              </a>
-            </li>
-            <li className="p-2 border-bottom">
-              <a href="#!" className="d-flex justify-content-between">
-                <div className="d-flex flex-row">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp"
-                    alt="avatar"
-                    className="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
-                    width="60"
-                  />
-                  <div className="pt-1">
-                    <p className="fw-bold mb-0">Danny Smith</p>
-                    <p className="small text-muted">Lorem ipsum dolor sit.</p>
-                  </div>
-                </div>
-                <div className="pt-1">
-                  <p className="small text-muted mb-1">5 mins ago</p>
-                </div>
-              </a>
-            </li>
-          </ul>
+const MemberList = ({ userId, conversationId, userIds, setUserIds }) => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+
+    const handleSearch = async () => {
+        if (searchTerm.trim() === '') return;
+
+        const q = query(collection(db, 'users'), where('firstName', '==', searchTerm));
+        const querySnapshot = await getDocs(q);
+        const users = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setSearchResults(users);
+    };
+
+    const handleAddUser = async (newUserId) => {
+        if (userIds.includes(newUserId)) return;
+
+        const conversationRef = doc(db, 'conversations', conversationId);
+        await updateDoc(conversationRef, {
+            members: [...userIds, newUserId]
+        });
+        setUserIds(prevUserIds => [...prevUserIds, newUserId]);
+    };
+
+    return (
+        <div className="col-md-4">
+            <h3>Members</h3>
+            <ul>
+                {userIds && userIds.map(memberId => (
+                    <Member key={memberId} userId={memberId} />
+                ))}
+            </ul>
+            <input
+                type="text"
+                placeholder="Search by name"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button onClick={handleSearch}>Search</button>
+            <ul>
+                {searchResults && searchResults.map(user => (
+                    <li key={user.id}>
+                        {user.firstName} {user.lastName}
+                        <button onClick={() => handleAddUser(user.id)}>Add</button>
+                    </li>
+                ))}
+            </ul>
         </div>
-      </div>
-    </div>
-  );
+    );
+};
+
+const Member = ({ userId }) => {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const userDoc = await getDoc(doc(db, 'users', userId));
+            setUser({ id: userDoc.id, ...userDoc.data() });
+        };
+
+        fetchUser();
+    }, [userId]);
+
+    if (!user) return null;
+
+    return (
+        <li>
+            {user.firstName} {user.lastName}
+        </li>
+    );
 };
 
 export default MemberList;

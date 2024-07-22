@@ -78,8 +78,8 @@ const Sidebar = () => {
                   <div className='hover:translate-x-1 transition duration-100'>
                     <img src={world} alt="icon2" className="w-7 h-7 mr-2 inline" />
                     {/* Use Link instead of anchor tag */}
-                    <Link to="/activity-stream" className="text-black no-underline font-semibold inline">
-                      Activity stream
+                    <Link to="/calendar" className="text-black no-underline font-semibold inline">
+                     Schedule
                     </Link>
                   </div> 
                 </li>

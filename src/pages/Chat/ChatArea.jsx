@@ -1,84 +1,105 @@
-// ChatArea.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { db } from '../../firebase/firebase';
+import { collection, query, where, onSnapshot, orderBy, addDoc, Timestamp } from 'firebase/firestore';
+import './ChatStyle.css'; // Ensure this CSS file is correctly named and located
 
-const ChatArea = () => {
+const ChatArea = ({ userId }) => {
+  const [conversationId, setConversationId] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState('');
+
+  useEffect(() => {
+    if (!userId) {
+      console.error("User ID is not defined.");
+      return;
+    }
+
+    const q = query(collection(db, 'conversations'), where('members', 'array-contains', userId));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      if (!snapshot.empty) {
+        const conversation = snapshot.docs[0];
+        setConversationId(conversation.id);
+      } else {
+        console.log("No conversations found.");
+      }
+    });
+
+    return () => unsubscribe();
+  }, [userId]);
+
+  useEffect(() => {
+    if (!conversationId) return;
+
+    const q = query(collection(db, `conversations/${conversationId}/messages`), orderBy('timestamp'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const messages = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setMessages(messages);
+    });
+
+    return () => unsubscribe();
+  }, [conversationId]);
+
+  const handleSendMessage = async () => {
+    if (newMessage.trim() === '') return;
+
+    await addDoc(collection(db, `conversations/${conversationId}/messages`), {
+      content: newMessage,
+      senderId: userId,
+      timestamp: Timestamp.fromDate(new Date())
+    });
+
+    setNewMessage('');
+  };
+
   return (
-    <div className="col-md-6 col-lg-7 col-xl-8" style={{ backgroundColor: '#eee' }}>
+    <div className="col-md-6 col-lg-7 col-xl-8 chat-area">
       <ul className="list-unstyled mt-5 chat-messages">
-        <li className="d-flex justify-content-between mb-4">
-          <img
-            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-            alt="avatar"
-            className="rounded-circle d-flex align-self-start me-3 shadow-1-strong"
-            width="60"
-          />
-          <div className="card">
-            <div className="card-header d-flex justify-content-between p-3">
-              <p className="fw-bold mb-0">Brad Pitt</p>
-              <p className="text-muted small mb-0">
-                <i className="far fa-clock"></i> 12 mins ago
-              </p>
+        {messages.map(msg => (
+          <li key={msg.id} className={`d-flex justify-content-between mb-4 ${msg.senderId === userId ? 'me' : 'other'}`}>
+            {msg.senderId !== userId && (
+              <img
+                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
+                alt="avatar"
+                className="rounded-circle d-flex align-self-start me-3 shadow-1-strong"
+                width="60"
+              />
+            )}
+            <div className={`card ${msg.senderId === userId ? 'sent' : 'received'}`}>
+              <div className="card-header d-flex justify-content-between p-3">
+                <p className="fw-bold mb-0">{msg.senderId === userId ? 'Me' : 'Brad Pitt'}</p>
+                <p className="text-muted small mb-0">
+                  <i className="far fa-clock"></i> {new Date(msg.timestamp.seconds * 1000).toLocaleTimeString()}
+                </p>
+              </div>
+              <div className="card-body">
+                <p className="mb-0">
+                  {msg.content}
+                </p>
+              </div>
             </div>
-            <div className="card-body">
-              <p className="mb-0">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.
-              </p>
-            </div>
-          </div>
-        </li>
-        <li className="d-flex justify-content-between mb-4">
-          <div className="card w-100">
-            <div className="card-header d-flex justify-content-between p-3">
-              <p className="fw-bold mb-0">Me</p>
-              <p className="text-muted small mb-0">
-                <i className="far fa-clock"></i> 13 mins ago
-              </p>
-            </div>
-            <div className="card-body">
-              <p className="mb-0">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
-              </p>
-            </div>
-          </div>
-          <img
-            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp"
-            alt="avatar"
-            className="rounded-circle d-flex align-self-start ms-3 shadow-1-strong"
-            width="60"
-          />
-        </li>
-        <li className="d-flex justify-content-between mb-4">
-          <img
-            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-            alt="avatar"
-            className="rounded-circle d-flex align-self-start me-3 shadow-1-strong"
-            width="60"
-          />
-          <div className="card">
-            <div className="card-header d-flex justify-content-between p-3">
-              <p className="fw-bold mb-0">Brad Pitt</p>
-              <p className="text-muted small mb-0">
-                <i className="far fa-clock"></i> 10 mins ago
-              </p>
-            </div>
-            <div className="card-body">
-              <p className="mb-0">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.
-              </p>
-            </div>
-          </div>
-        </li>
+            {msg.senderId === userId && (
+              <img
+                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp"
+                alt="avatar"
+                className="rounded-circle d-flex align-self-start ms-3 shadow-1-strong"
+                width="60"
+              />
+            )}
+          </li>
+        ))}
       </ul>
-      <li className="bg-white mb-3">
-        <div className="d-flex justify-content-between align-items-center input-group">
-          <div className="form-outline w-75">
-            <textarea className="form-control" id="textAreaExample2" rows="1" placeholder="Text here"></textarea>
-          </div>
-          <button type="button" className="btn btn-success btn-rounded ms-3">Send</button>
+      <div className="input bg-white p-3">
+        <div className="d-flex justify-content-between align-items-center">
+          <input
+            type="text"
+            className="form-control"
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Type a message..."
+          />
+          <button onClick={handleSendMessage} className="btn btn-success btn-rounded ms-3">Send</button>
         </div>
-      </li>
+      </div>
     </div>
   );
 };
